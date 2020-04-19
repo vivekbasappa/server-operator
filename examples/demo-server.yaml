@@ -1,0 +1,276 @@
+# # Use this file with the -demo flag to the controller to produce 1
+# # host in each state.
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: demo-puma-discovered-secret
+type: Opaque
+data:
+  username: YWRtaW4=
+  password: MWYyZDFlMmU2N2Rm
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: demo-bmc-discovered-secret
+type: Opaque
+data:
+  username: YWRtaW4=
+  password: MWYyZDFlMmU2N2Rm
+---
+apiVersion: app.example.com/v1alpha1
+kind: Server
+metadata:
+  name: demo-discovered
+
+---
+apiVersion: machine.openshift.io/v1beta1
+kind: Machine
+metadata:
+  labels:
+    sigs.k8s.io/cluster-api-cluster: ostest
+    sigs.k8s.io/cluster-api-machine-role: worker
+    sigs.k8s.io/cluster-api-machine-type: worker
+  name: demo-ostest-worker
+  namespace: puma
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: demo-puma-registration-error-secret
+type: Opaque
+data:
+  username: YWRtaW4=
+  password: MWYyZDFlMmU2N2Rm
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: demo-demo-registration-error-secret
+type: Opaque
+data:
+  username: YWRtaW4=
+  password: MWYyZDFlMmU2N2Rm
+---
+apiVersion: app.example.com/v1alpha1
+kind: Server
+metadata:
+  name: demo-registration-error
+  labels:
+    metal3demo: ""
+spec:
+  online: true
+  bmc:
+    address: 192.168.122.1
+    credentialsName: demo-bmc-registration-error-secret
+  puma:
+    address: https://192.168.122.1:8444/v8/compute
+    credentialsName: demo-puma-registration-error-secret
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: demo-bmc-registering-secret
+type: Opaque
+data:
+  username: YWRtaW4=
+  password: MWYyZDFlMmU2N2Rm
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: demo-puma-registering-secret
+type: Opaque
+data:
+  username: YWRtaW4=
+  password: MWYyZDFlMmU2N2Rm
+---
+apiVersion: app.example.com/v1alpha1
+kind: Server
+metadata:
+  name: demo-registering
+  labels:
+    metal3demo: ""
+spec:
+  online: true
+  bmc:
+    address: 192.168.122.2
+    credentialsName: demo-bmc-registering-secret
+  puma:
+    address: https://192.168.122.23:8444/v8/compute
+    credentialsName: demo-puma-registering-secret
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: demo-bmc-ready-secret
+type: Opaque
+data:
+  username: YWRtaW4=
+  password: MWYyZDFlMmU2N2Rm
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: demo-puma-ready-secret
+type: Opaque
+data:
+  username: YWRtaW4=
+  password: MWYyZDFlMmU2N2Rm
+---
+apiVersion: app.example.com/v1alpha1
+kind: Server
+metadata:
+  name: demo-ready
+  labels:
+    metal3demo: ""
+spec:
+  online: true
+  bmc:
+    address: 192.168.122.3
+    credentialsName: demo-bmc-ready-secret
+  puma:
+    address: https://192.168.122.23:8444/v8/compute
+    credentialsName: demo-puma-ready-secret
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: demo-puma-inspecting-secret
+type: Opaque
+data:
+  username: YWRtaW4=
+  password: MWYyZDFlMmU2N2Rm
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: demo-bmc-inspecting-secret
+type: Opaque
+data:
+  username: YWRtaW4=
+  password: MWYyZDFlMmU2N2Rm
+---
+apiVersion: app.example.com/v1alpha1
+kind: Server
+metadata:
+  name: demo-inspecting
+  labels:
+    metal3demo: ""
+spec:
+  online: true
+  bmc:
+    address: 192.168.122.4
+    credentialsName: demo-bmc-inspecting-secret
+  puma:
+    address: https://192.168.122.24:8444/v4/compute
+    credentialsName: demo-bmc-inspecting-secret
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: demo-puma-provisioning-secret
+type: Opaque
+data:
+  username: YWRtaW4=
+  password: MWYyZDFlMmU2N2Rm
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: demo-bmc-provisioning-secret
+type: Opaque
+data:
+  username: YWRtaW4=
+  password: MWYyZDFlMmU2N2Rm
+
+---
+apiVersion: app.example.com/v1alpha1
+kind: Server
+metadata:
+  name: demo-provisioning
+  labels:
+    metal3demo: ""
+spec:
+  online: true
+  bmc:
+    address: 192.168.122.6
+    credentialsName: demo-bmc-provisioning-secret
+  puma:
+    address: https://192.168.122.16:8444/v4/compute
+    credentialsName: demo-puma-provisioning-secret
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: demo-bmc-provisioned-secret
+type: Opaque
+data:
+  username: YWRtaW4=
+  password: MWYyZDFlMmU2N2Rm
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: demo-puma-provisioned-secret
+type: Opaque
+data:
+  username: YWRtaW4=
+  password: MWYyZDFlMmU2N2Rm
+
+---
+apiVersion: app.example.com/v1alpha1
+kind: Server
+metadata:
+  name: demo-provisioned
+  labels:
+    metal3demo: ""
+spec:
+  online: true
+  bmc:
+    address: 192.168.122.8
+    credentialsName: demo-bmc-provisioned-secret
+  puma:
+    address: https://192.168.122.28:8444/v4/compute
+    credentialsName: demo-puma-provisioned-secret
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: demo-puma-validation-error-secret
+type: Opaque
+data:
+  username: YWRtaW4=
+  password: MWYyZDFlMmU2N2Rm
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: demo-bmc-validation-error-secret
+type: Opaque
+data:
+  username: YWRtaW4=
+  password: MWYyZDFlMmU2N2Rm
+---
+apiVersion: app.example.com/v1alpha1
+kind: Server
+metadata:
+  name: demo-validation-error
+  labels:
+    metal3demo: ""
+spec:
+  online: true
+  bmc:
+    address: 192.168.122.8
+    credentialsName: demo-bmc-validation-error-secret
+  puma:
+    address: https://192.168.122.8:8444/v4/compute
+    credentialsName: demo-puma-validation-error-secret
